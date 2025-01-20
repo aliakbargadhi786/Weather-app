@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  node-app:
+    build:
+      context: .  # The current directory containing the Dockerfile
+      dockerfile: Dockerfile  # Name of your Dockerfile (optional if named Dockerfile)
+    ports:
+      - "3000:3000"  # Expose port 3000 from the container to the host
+    volumes:
+      - .:/usr/src/app  # Mount current directory to container for development
+    environment:
+      - NODE_ENV=development  # Set environment variable for dev or prod
+    networks:
+      - app-network
+    restart: always  # Restart container automatically on failure
+
+  # Example: Add a database (MongoDB, PostgreSQL, etc.)
+  # db:
+  #   image: mongo:latest
+  #   volumes:
+  #     - mongo-data:/data/db
+  #   networks:
+  #     - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+# Uncomment the following section if using volumes to persist data
+# volumes:
+#   mongo-data:
