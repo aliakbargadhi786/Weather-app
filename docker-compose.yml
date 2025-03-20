@@ -6,7 +6,7 @@ services:
       context: .  # The current directory containing the Dockerfile
       dockerfile: Dockerfile  # Name of your Dockerfile (optional if named Dockerfile)
     ports:
-      - "3000:3000"  # Expose port 3000 from the container to the host
+      - "3002:3000"  # Expose port 3000 from the container to the host
     volumes:
       - .:/usr/src/app  # Mount current directory to container for development
     environment:
